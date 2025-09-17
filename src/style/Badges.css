@@ -1,0 +1,39 @@
+.badges-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: grid;
+  place-items: center;
+  z-index: 999;
+}
+
+.badges-modal {
+  background: #fff;
+  color: #0b1440;
+  padding: 20px;
+  border-radius: 16px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  animation: pop 0.3s ease-out;
+}
+
+.badges-modal h3 {
+  margin-top: 0;
+}
+
+.badges-modal ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+
+.badges-modal li {
+  margin: 6px 0;
+  font-weight: bold;
+}
+
+@keyframes pop {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

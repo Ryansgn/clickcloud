@@ -1,0 +1,86 @@
+/* === Tela Inicial === */
+.start-screen {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: url("../img/telainicial.png") no-repeat center/cover;
+  overflow: hidden;
+  padding: 20px; /* espaço interno p/ não colar borda em telas menores */
+}
+
+/* Container principal */
+.menu.card {
+  position: relative;
+  width: min(800px, 95%); /* adapta ao viewport */
+  padding: clamp(20px, 4vw, 40px) clamp(15px, 3vw, 30px);
+  background: #ffeaea;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  border: 2px solid #f5c0b8;
+  margin-top: -15vh; /* usa vh em vez de px fixo */
+}
+
+/* Título */
+.title {
+  font-size: clamp(20px, 5vw, 40px); /* escala entre mobile e desktop */
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  color: #000;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+/* Texto introdutório */
+.intro {
+  font-size: clamp(12px, 2.5vw, 16px);
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  line-height: 1.6;
+  color: #ac3619;
+  margin-bottom: 30px;
+  padding: 0 10px; /* evita colar nas bordas em telas muito estreitas */
+}
+
+/* Botões em coluna */
+.buttons.column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Estilo dos botões */
+.menu-btn {
+  width: clamp(160px, 60%, 240px); /* adapta em telas menores */
+  padding: 12px;
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: clamp(12px, 3vw, 14px);
+  border: none;
+  border-radius: 10px;
+  background: #ffbeab;
+  color: #000;
+  box-shadow: 0 4px 0 #b84a3f;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.menu-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 0 #b84a3f;
+}
+
+.menu-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #b84a3f;
+}
+
+/* === Media Queries extras para telas muito pequenas === */
+@media (max-width: 480px) {
+  .menu.card {
+    margin-top: -10vh; /* sobe menos em celulares */
+    padding: 20px 15px;
+  }
+  
+  .buttons.column {
+    gap: 12px;
+  }
+}

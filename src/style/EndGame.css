@@ -1,0 +1,108 @@
+.endgame-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Press Start 2P', monospace;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+/* Fundo temático */
+.theme-armazenamento1 {
+  background-image: url("/img/armazenamentofinal.png");
+}
+
+.theme-seguranca1 {
+  background-image: url("/img/segurancafinal.png");
+}
+.theme-seguranca1 .endgame-container {
+    background: #cae2ff;
+}
+.theme-seguranca1 .endgame-message {
+color: #000;
+}
+.theme-seguranca1 .endgame-title {
+    color: #000;
+}
+.theme-seguranca1 .stat-box {
+    color: #000;
+    background: #cae2ff;
+    border: 1px solid #ffffff;
+}
+
+.theme-seguranca1 .endgame-btn {
+ background: linear-gradient(180deg, #88bfff, #1c84ff);
+ color: #000;
+
+}
+
+
+
+.endgame-container {
+  background: #2a2f80;
+  padding: 32px 48px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  
+  /* 🔹 Deixa mais largo */
+  max-width: 800px;   /* antes era 520px */
+  width: 90%;         /* ocupa quase toda a tela */
+  min-height: 300px;  /* força altura retangular */
+}
+
+.endgame-title {
+  font-size: 22px;
+  margin-bottom: 16px;
+  color: #ffffff;
+  text-shadow: 0 2px 0 #000;
+}
+
+.endgame-message {
+  font-size: 19px;
+  margin-bottom: 24px;
+  line-height: 1.6;
+  color: #fff;
+  font-family: Montserrat;
+  font-weight: bolder;
+}
+
+.endgame-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.stat-box {
+font-family: Montserrat;
+font-weight: bolder;
+  background: #2e1b5b;
+  border: 1px solid #000;
+  border-radius: 15px;
+  padding: 10px 14px;
+  font-size: 17px;
+  color: #fff;
+  text-align: left;
+}
+
+.endgame-btn {
+  padding: 12px 24px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  background: linear-gradient(180deg, #2b549a, #252770);
+  color: #fff;
+  border-radius: 12px;
+  padding: 8px 14px;
+  cursor: pointer;
+  box-shadow: 0 1px 0 #000;
+  transition: transform 0.15s ease, background 0.2s ease;
+   z-index: 1000;
+}
+
+.endgame-btn:hover {
+ transform: scale(1.05);
+  opacity: 0.9;
+}

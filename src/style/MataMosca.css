@@ -1,0 +1,494 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+
+.mata-mosca-container {
+  min-height: 100vh;   /* agora ocupa a tela inteira */
+  width: 100%;
+  border-radius: 0;    /* sem borda arredondada pra cobrir tudo */
+  padding: 14px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-armazenamento {
+  background: url("../img/armazenamento.png") center/cover no-repeat fixed;
+}
+
+.bg-seguranca {
+  background: url("../img/seguranca.png") center/cover no-repeat fixed;
+}
+
+/* HUD */
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1px;
+
+}
+
+.hud-left {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-weight: 600;
+}
+
+.hud-title {
+  font-weight: 800;
+}
+
+.hud-buttons {
+    position: fixed; /* sempre visível, independente do scroll */
+  bottom: 20px;
+  left: 20px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  background: #2c1c8a;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  padding: 8px 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #000;
+  transition: transform 0.15s ease, background 0.2s ease;
+  z-index: 1000;
+}
+
+.restart-button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #4ade80, #16a34a);
+  color: #042;
+  border: none;
+  cursor: pointer;
+}
+
+/* Área do jogo */
+.game-area {
+  position: relative;
+  height: calc(100vh - 24x); /* ajusta para ocupar toda a tela menos o HUD */
+  margin-top: 12px;
+}
+
+.mosca {
+  position: absolute;
+  cursor: crosshair;
+}
+
+/* Overlays */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  gap: 16px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.overlay-button {
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 10px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.overlay-button.red {
+  background: linear-gradient(180deg, #f87171, #dc2626);
+}
+
+.overlay-button.blue {
+  background: linear-gradient(180deg, #60a5fa, #1d4ed8);
+}
+
+.heart-icon {
+  display: flex;
+  gap: 6px; /* controla o espaço entre os corações */
+  font-size: 15px;
+    height: 18px; 
+    width: auto;
+}
+
+.hud-time{
+  font-weight: bolder;
+}
+
+.hud-score {
+  font-weight: bolder;
+}
+
+.hud-info {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 20px; /* controla o espaçamento entre ⏱, 💥 e ❤️ */
+}
+
+.hud-time,
+.hud-score,
+.hud-lives {
+  display: flex;
+  align-items: center;
+}
+
+.heart-icon {
+  width: 18px;   /* ajuste o tamanho aqui */
+  height: auto;
+  margin-left: 6px; /* espaço entre corações */
+}
+
+.game-header h1 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.game-header p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+ font-weight: bolder;
+ color:#fff; }
+
+ .theme-seguranca .game-header h1 {
+  color: #000000;
+ }
+
+  .theme-seguranca .game-header P {
+  color: #000000;
+ }
+
+
+
+.theme-armazenamento {
+  background: url("../img/armazenamento.png") center/cover no-repeat fixed;
+  color: #1c1c1c; /* cor padrão do texto */
+}
+
+.theme-seguranca {
+  background: url("../img/seguranca.png") center/cover no-repeat fixed;
+  color: #fff; /* cor padrão do texto */
+}
+
+
+
+.mosca-eliminated {
+  width: min(960px, 92vw);
+  min-height: 400px;
+  background: #1d2a6d; /* azul escuro */
+  border-radius: 16px;
+  padding: 40px 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  color: #fff;
+  font-family: 'Press Start 2P', Arial, sans-serif;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.mosca-eliminated img.mosca-icon {
+  width: 90px;
+  height: 90px;
+
+}
+
+.mosca-eliminated h2 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.mosca-eliminated p {
+  font-size: 17px;
+  color: #ffffff;
+  opacity: 0.95;
+  text-transform: uppercase;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  max-width: 720px;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+
+.mosca-eliminated .mosca-cta {
+  margin-top: 20px;
+  background: linear-gradient(180deg, #50f1ec, #0e848b);
+  color: #fff;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.mosca-eliminated .mosca-cta:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+
+.mata-mosca-container {
+  min-height: 100vh;   /* agora ocupa a tela inteira */
+  width: 100%;
+  border-radius: 0;    /* sem borda arredondada pra cobrir tudo */
+  padding: 14px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-armazenamento {
+  background: url("../img/armazenamento.png") center/cover no-repeat fixed;
+}
+
+.bg-seguranca {
+  background: url("../img/seguranca.png") center/cover no-repeat fixed;
+}
+
+/* HUD */
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1px;
+
+}
+
+.hud-left {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-weight: 600;
+}
+
+.hud-title {
+  font-weight: 800;
+}
+
+.hud-buttons {
+    position: fixed; /* sempre visível, independente do scroll */
+  bottom: 20px;
+  left: 20px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  background: #2c1c8a;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  padding: 8px 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #000;
+  transition: transform 0.15s ease, background 0.2s ease;
+  z-index: 1000;
+}
+
+.restart-button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #4ade80, #16a34a);
+  color: #042;
+  border: none;
+  cursor: pointer;
+}
+
+/* Área do jogo */
+.game-area {
+  position: relative;
+  height: calc(100vh - 24x); /* ajusta para ocupar toda a tela menos o HUD */
+  margin-top: 12px;
+}
+
+.mosca {
+  position: absolute;
+  cursor: crosshair;
+}
+
+/* Overlays */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  gap: 16px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.overlay-button {
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 10px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.overlay-button.red {
+  background: linear-gradient(180deg, #f87171, #dc2626);
+}
+
+.overlay-button.blue {
+  background: linear-gradient(180deg, #60a5fa, #1d4ed8);
+}
+
+.heart-icon {
+  display: flex;
+  gap: 6px; /* controla o espaço entre os corações */
+  font-size: 15px;
+    height: 18px; 
+    width: auto;
+}
+
+.hud-time{
+  font-weight: bolder;
+}
+
+.hud-score {
+  font-weight: bolder;
+}
+
+.hud-info {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 20px; /* controla o espaçamento entre ⏱, 💥 e ❤️ */
+}
+
+.hud-time,
+.hud-score,
+.hud-lives {
+  display: flex;
+  align-items: center;
+}
+
+.heart-icon {
+  width: 18px;   /* ajuste o tamanho aqui */
+  height: auto;
+  margin-left: 6px; /* espaço entre corações */
+}
+
+.game-header h1 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.game-header p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+ font-weight: bolder;
+ color:#fff; }
+
+ .theme-seguranca .game-header h1 {
+  color: #000000;
+ }
+
+  .theme-seguranca .game-header P {
+  color: #000000;
+ }
+
+
+
+.theme-armazenamento {
+  background: url("../img/armazenamento.png") center/cover no-repeat fixed;
+  color: #1c1c1c; /* cor padrão do texto */
+}
+
+.theme-seguranca {
+  background: url("../img/seguranca.png") center/cover no-repeat fixed;
+  color: #fff; /* cor padrão do texto */
+}
+
+
+
+.mosca-eliminated {
+  width: min(960px, 92vw);
+  min-height: 400px;
+  background: #1d2a6d; /* azul escuro */
+  border-radius: 16px;
+  padding: 40px 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  color: #fff;
+  font-family: 'Press Start 2P', Arial, sans-serif;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.mosca-eliminated img.mosca-icon {
+  width: 90px;
+  height: 90px;
+
+}
+
+.mosca-eliminated h2 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.mosca-eliminated p {
+  font-size: 17px;
+  color: #ffffff;
+  opacity: 0.95;
+  text-transform: uppercase;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  max-width: 720px;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+
+.mosca-eliminated .mosca-cta {
+  margin-top: 20px;
+  background: linear-gradient(180deg, #50f1ec, #0e848b);
+  color: #fff;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.mosca-eliminated .mosca-cta:hover {
+ transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.theme-seguranca .mosca-eliminated {
+  color: #000000; /* fonte preta apenas aqui */
+}
+
+.theme-seguranca .mosca-eliminated p {
+  color: #000000; /* garantir que os parágrafos fiquem pretos */
+}
+
+
+.theme-seguranca .mosca-eliminated {
+   background: #cae2ff; /* azul escuro */
+}
+.theme-seguranca .mosca-eliminated .mosca-cta  {
+  background: linear-gradient(180deg, #2b549a, #252770)
+}

@@ -1,0 +1,447 @@
+.quiz-wrap {
+  min-height: calc(100vh - 64px);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  color: #fff;
+  font-family: 'Press Start 2P', Arial, sans-serif; /* estilo arcade */
+  text-align: center;
+}
+
+/* ❌ pode remover se não for mais usar
+.quiz-topbar {
+  width: min(960px, 92vw);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+*/
+
+.quiz-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.quiz-description {
+  font-family: "Montserrat", sans-serif;
+    font-weight: bold; 
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ffffff;
+  line-height: 1.4;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  white-space: pre-line; /* respeita quebras de linha */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.95;
+}
+.quiz-status {
+  width: 100%; /* garante que ocupe toda a linha */
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end; /* agora vai colar tudo à direita */
+  margin-bottom: 20px;
+  
+  margin-right: 470px;   /* <-- afasta um pouco da direita */
+
+}
+
+
+.quiz-hearts {
+  display: flex;
+  gap: 6px; /* controla o espaço entre os corações */
+  font-size: 20px;
+}
+
+
+.heart-icon {
+  width: 25px;
+  height: 25px;
+  float: right;
+  margin-left: 10px; /* espaço opcional à esquerda */
+}
+
+.quiz-progress {
+  width: 160px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.quiz-progress-bar {
+  height: 10px;
+  background: linear-gradient(90deg, #60a5fa, #2563eb);
+}
+
+/* ... resto do seu CSS permanece igual */
+
+.quiz-card {
+  width: min(960px, 92vw);
+  background: #2a2f80;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+.quiz-question {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+ 
+
+}
+
+.quiz-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.quiz-option {
+  padding: 12px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  color: #262c75;
+  background: #d3e7ff;
+  font-weight: 800;
+  font-family: "Montserrat", sans-serif;
+  transition: all 0.2s ease;
+}
+
+.quiz-option:hover:not(:disabled) {
+   transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.quiz-option.correct {
+  background: #15a416 !important;
+  color: #fff !important;
+}
+
+.quiz-option.wrong {
+  background: #e81f2d !important;
+  color: #fff !important;
+}
+
+.quiz-tip {
+  opacity: 0.9;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold; 
+
+}
+
+.quiz-cta {
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+ font-family: 'Press Start 2P', Arial, sans-serif; 
+}
+
+.quiz-cta.continue-btn {
+  background: linear-gradient(180deg, #50f1ec, #0e848b);
+  color: white;
+}
+
+.quiz-cta.continue-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.quiz-cta.hint-btn {
+  background: linear-gradient(180deg, #f4d44d, #dba519);
+  color: #fff;
+}
+
+.quiz-cta.hint-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* -------------------- BOTÕES -------------------- */
+.quiz-back {
+  position: fixed; /* sempre visível, independente do scroll */
+  bottom: 20px;
+  left: 20px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  background: #2c1c8a;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  padding: 8px 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #000;
+  transition: transform 0.15s ease, background 0.2s ease;
+  z-index: 1000;
+}
+.quiz-back:hover {
+  transform: scale(1.03);
+}
+.quiz-finish {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* Tema Nuvem */
+/* Tema Segurança */
+.theme-seguranca .quiz-card {
+  background: #cae2ff !important; /* fundo azul claro */
+}
+
+.theme-seguranca .quiz-description {
+  color: #000000 !important; /* fonte vermelha */
+}
+
+.theme-seguranca .quiz-cta.continue-btn {
+  background: linear-gradient(180deg, #2b549a, #252770);
+  color: white;
+}
+
+.theme-seguranca .quiz-back {
+
+  background:  linear-gradient(180deg, #88bfff, #1c84ff);
+}
+
+.theme-seguranca .quiz-option{
+  color: #ffffff;
+  background: #2a2f80;
+
+}
+
+
+.theme-seguranca .quiz-question{ 
+   color: #000;
+}
+.quiz-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* espaço horizontal entre os botões */
+  margin-top: 20px; /* espaço acima do grupo de botões */
+}
+
+
+.theme-seguranca .quiz-title {
+  color: #000;
+}
+
+.theme-seguranca .quiz-tip {
+  color: #262c75;
+  font-weight: bolder;
+}
+
+.theme-seguranca 
+.quiz-cta.continue-btn {
+  background: #262c75,
+
+}
+
+
+
+
+
+.quiz-context {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold; 
+  font-size: 17px;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ffffff;
+  line-height: 1.4;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  white-space: pre-line; /* respeita quebras de linha */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.95;
+}
+
+
+.theme-seguranca .quiz-context {
+  color: #000;
+}
+.quiz-eliminated {
+  width: min(960px, 92vw);
+  min-height: 400px; /* <<< altura mínima para dar formato quadrado */
+  background: #1d2a6d; /* azul escuro */
+  border-radius: 16px;
+  padding: 40px 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  color: #fff;
+  font-family: 'Press Start 2P', Arial, sans-serif;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center; /* centraliza tudo verticalmente */
+}
+
+.quiz-eliminated img.eliminated-icon {
+  width: 70px;   /* ajuste conforme sua imagem */
+  height: 70px;  /* ajuste conforme sua imagem */
+  margin-bottom: 10px; /* espaço abaixo do X */
+}
+
+.quiz-eliminated h2 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.quiz-eliminated p {
+  font-size: 17px;
+  color: #ffffff;
+  opacity: 0.95;
+  text-transform: uppercase;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  max-width: 720px;
+  margin: 0 auto;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold; 
+}
+
+.quiz-eliminated .quiz-cta {
+  margin-top: 20px;
+  background: linear-gradient(180deg, #50f1ec, #0e848b);
+  color: #fff;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.quiz-eliminated .quiz-cta:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+.quiz-finished {
+  width: min(960px, 92vw);
+  min-height: 400px; /* altura mínima para formato mais quadrado */
+  background: #1d2a6d; /* azul escuro */
+  border-radius: 16px;
+  padding: 40px 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  color: #fff;
+  font-family: 'Press Start 2P', Arial, sans-serif;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center; /* centraliza verticalmente */
+}
+
+.quiz-finished img.finished-icon {
+  width: 70px;   /* ajuste conforme sua imagem */
+  height: 70px;  /* ajuste conforme sua imagem */
+  margin-bottom: 10px; /* espaço abaixo do ícone */
+}
+
+.quiz-finished h2 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: #6fff6f; /* verde do check */
+}
+
+.quiz-finished p {
+  font-size: 17px;
+  color: #ffffff;
+  opacity: 0.95;
+  text-transform: uppercase;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  max-width: 720px;
+  margin: 0 auto;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold; 
+}
+
+.quiz-finished .quiz-cta {
+  margin-top: 20px;
+  background: linear-gradient(180deg, #4caf50, #2e7d32); /* verde estilo botão */
+  color: #fff;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.quiz-finished .quiz-cta:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.theme-seguranca .quiz-finished {
+  background: #cae2ff;
+}
+
+
+.theme-seguranca .quiz-finished p {
+color: #000;
+} 
+
+.theme-seguranca .quiz-finished h2 {
+  color: #000;
+}
+
+.theme-seguranca .quiz-eliminated {
+  background: #cae2ff;
+}
+
+
+.theme-seguranca .quiz-eliminated p {
+color: #000;
+} 
+
+.theme-seguranca .quiz-eliminated h2 {
+  color: #000;
+}
+
+.quiz-hint {
+  color: #ebebeb;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold; 
+    padding: 10px;
+}
+.theme-seguranca .quiz-hint {
+  color: #000;
+}
+.theme-seguranca .quiz-eliminated .quiz-cta  {
+  background: linear-gradient(180deg, #2b549a, #252770)
+}

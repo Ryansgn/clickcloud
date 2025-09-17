@@ -1,0 +1,115 @@
+/* Fundo geral */
+.class-screen {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../img/telainicial2.png") no-repeat center/cover;
+  color: #2c1c1c;
+}
+
+/* Container branco */
+.class-container {
+  background: #fff6f3;
+  border-radius: 28px;
+  padding: 30px 30px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  max-width: 880px;
+  width: 90%;
+}
+
+/* Título */
+.class-title {
+  font-family: "Press Start 2P", cursive;
+  font-size: 22px;
+  margin-bottom: 28px;
+  color:#000000;
+}
+
+/* Opções de classe lado a lado */
+.class-options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+}
+
+.class-card {
+  flex: 1 1 220px;
+  max-width: 250px;
+  background: linear-gradient(180deg, #ff8c6b, #ffbfac);
+   border-radius: 36px; /* atualizado de 28px para 36px */
+  padding: 45px 0.20px; /* padding vertical 30px, horizontal 4px */
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: #fff;
+  line-height: 1.4;
+  border: 3px solid transparent;
+  position: relative;
+}
+
+.class-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* Borda animada quando selecionado */
+.class-card.selected::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 22px;
+  background: linear-gradient(10deg, #00ffc9, #a600ff );
+  padding: 3px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Ícone da classe */
+.class-card .emoji {
+  font-size: 34px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Nome da classe */
+.class-card .name {
+  font-family: "Press Start 2P", cursive;
+  font-weight: bold;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color:#662617;
+}
+
+/* Descrição */
+.class-card .desc {
+  font-family: "Disket Mono", monospace;
+  font-size: 18.6px;
+  color:#662617;
+}
+
+/* Botão confirmar */
+.class-btn-confirm {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #f47c57;
+  color: #131313;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+    border: "2px solid #e97b62";
+  boxShadow: "0 3px 0 #e97b62";
+  transition: background 0.2s, transform 0.15s;
+  font-family: "Press Start 2P", cursive;
+}
+
+.class-btn-confirm:hover {
+  background: #e66a48;
+  transform: scale(1.05);
+}

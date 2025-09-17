@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Disket+Mono&display=swap");
+
+html, body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* só esconde scroll horizontal */
+}
+
+.drag-drop-layout {
+  min-height: 100vh; /* ocupa no mínimo toda a tela, mas pode crescer */
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* cobre a tela sem distorcer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 80px;
+  box-sizing: border-box;
+}
+/* -------------------- TÍTULO -------------------- */
+.drag-drop-title {
+  font-family: "Press Start 2P", cursive;
+  font-size: 36px;
+  text-align: center;
+  margin-top: -60px;
+  margin-bottom: 20px;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+/* -------------------- DESCRIÇÃO -------------------- */
+.drag-drop-description {
+  font-family: "Montserrat", sans-serif;
+    font-weight: bold; 
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ffffff;
+  line-height: 1.4;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  white-space: pre-line; /* respeita quebras de linha do texto JSX */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.95;
+}
+
+/* -------------------- DRAGGABLES -------------------- */
+.draggables {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 900px;
+}
+
+.draggable {
+  padding: 12px 22px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #0b1440;
+  font-weight: 400;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.12s ease, opacity 0.2s;
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.draggable:active {
+  transform: scale(0.98);
+}
+
+.draggable.dropped {
+  background: rgba(255, 255, 255, 0.35);
+  cursor: not-allowed;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+/* -------------------- COMPARTMENTS -------------------- */
+.compartments {
+  display: flex;
+  gap: 24px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.compartment {
+  width: min(36vw, 400px);
+  height: 170px;
+  display: grid;
+  place-items: center;
+  background: rgba(11, 20, 64, 0.6);
+  border: 3px dashed rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+  transform: translateZ(0);
+  padding: 18px;
+}
+
+.compartment > div:first-child {
+  font-family: "Press Start 2P", cursive;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.compartment > div:last-child {
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 6px;
+  letter-spacing: 1px;
+}
+
+/* -------------------- FEEDBACK & PROGRESS -------------------- */
+.feedback-message {
+  color: #fff;
+  font-weight: 700;
+  margin-top: 18px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  text-transform: none;
+}
+
+.progress {
+  color: #fff;
+  font-weight: 700;
+  margin-top: 18px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* -------------------- BOTÕES -------------------- */
+.back-button {
+  position: fixed; /* sempre visível, independente do scroll */
+  bottom: 20px;
+  left: 20px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  background: #2c1c8a;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  padding: 8px 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #000;
+  transition: transform 0.15s ease, background 0.2s ease;
+  z-index: 1000;
+}
+.back-button:hover {
+  transform: scale(1.03);
+}
+/* -------------------- ANIMAÇÕES -------------------- */
+@keyframes errorShake {
+  0%, 100% {
+    transform: translateX(0);
+    border-color: red;
+  }
+  20%, 60% {
+    transform: translateX(-6px);
+    border-color: red;
+  }
+  40%, 80% {
+    transform: translateX(6px);
+    border-color: red;
+  }
+}
+
+@keyframes successPulse {
+  0% { transform: scale(1); background-color: rgba(0, 255, 0, 0.2); }
+  50% { transform: scale(1.05); background-color: rgba(0, 255, 0, 0.3); }
+  100% { transform: scale(1); background-color: rgba(0, 255, 0, 0.2); }
+}
+.compartment.error {
+  animation: errorShake 0.5s ease-in-out;
+}
+
+.compartment.success { animation: successPulse 1s ease-in-out; }
+
+/* Reduz movimento se usuário preferir */
+@media (prefers-reduced-motion: reduce) {
+  .compartment.error,
+  .compartment.success,
+  .draggable,
+  .back-button {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Tema armazenamento */
+.theme-armazenamento .drag-drop-title,
+.theme-armazenamento .drag-drop-description,
+.theme-armazenamento .compartment {
+  color: #fff;
+}
+
+.theme-armazenamento .compartment {
+  border-color: rgba(255, 255, 255, 0.6); /* branco para combinar com fundo escuro */
+}
+
+/* Tema segurança */
+.theme-seguranca .drag-drop-title,
+.theme-seguranca .drag-drop-description,
+.theme-seguranca .draggable,
+.theme-seguranca .compartment,
+.theme-seguranca .progress {
+  color: #000;
+}
+
+.theme-seguranca .compartment {
+  border-color: rgba(0, 0, 0, 0.6);
+}
+
+.theme-seguranca .feedback-message {
+  color: #000;
+}
+
+.theme-seguranca .compartment {
+  background: #cae2ff; /* nova cor para a caixa de arraste */
+  border-color: rgba(0, 0, 0, 0.6); /* mantém a borda preta */
+}
+
+/* Tema armazenamento - texto "Arraste aqui" preto */
+/* Tema segurança - texto "Arraste até aqui" preto */
+.theme-seguranca .compartment > div:first-child {
+  color: #000 !important;
+}
+
+/* Tema armazenamento - mantém como está */
+.theme-armazenamento .compartment > div:first-child {
+  color: #fff; /* ou a cor que já estava */
+}
+
+.theme-seguranca .back-button {
+
+  background:  linear-gradient(180deg, #88bfff, #1c84ff);
+}
+
+
+.complete-button {
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  background: #559a2b;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  padding: 8px 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #000;
+  transition: transform 0.15s ease, background 0.2s ease;
+  
+}
+
+.complete-button:hover {
+  transform: scale(1.03);
+}
